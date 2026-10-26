@@ -1,0 +1,58 @@
+services:
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: hope-church-qdrant
+
+    ports:
+      - "127.0.0.1:6333:6333"
+
+    volumes:
+      - qdrant_storage:/qdrant/storage
+
+    restart: unless-stopped
+
+  neo4j:
+    image: neo4j:5.26-community
+    container_name: hope-church-neo4j
+    ports:
+      - "127.0.0.1:7474:7474"
+      - "127.0.0.1:7687:7687"
+    environment:
+      NEO4J_AUTH: ${NEO4J_USERNAME:-neo4j}/${NEO4J_PASSWORD:?Set NEO4J_PASSWORD}
+    volumes:
+      - neo4j_data:/data
+      - neo4j_logs:/logs
+    restart: unless-stopped
+
+  fuseki-init:
+    image: stain/jena-fuseki:5.1.0
+    container_name: hope-church-fuseki-init
+    user: "0:0"
+    entrypoint: ["/bin/sh", "-c"]
+    command: ["chown -R fuseki:fuseki /fuseki"]
+    volumes:
+      - fuseki_data:/fuseki
+    restart: "no"
+
+  fuseki:
+    image: stain/jena-fuseki:5.1.0
+    container_name: hope-church-fuseki
+    command: ["/jena-fuseki/fuseki-server"]
+    ports:
+      - "127.0.0.1:3030:3030"
+    environment:
+      ADMIN_PASSWORD: ${FUSEKI_PASSWORD:?Set FUSEKI_PASSWORD}
+      FUSEKI_DATASET_1: ${FUSEKI_DATASET:-hope}
+      TDB: "2"
+    volumes:
+      - fuseki_data:/fuseki
+    depends_on:
+      fuseki-init:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+volumes:
+  qdrant_storage:
+  neo4j_data:
+  neo4j_logs:
+  fuseki_data:

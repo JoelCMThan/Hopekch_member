@@ -1,0 +1,104 @@
+.sp__title {
+  margin: 0;
+}
+
+.sp__controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.sp__search-input {
+  padding: 0 14px;
+  width: min(100%, 420px);
+  box-sizing: border-box;
+}
+
+.sp__error {
+  margin-bottom: 16px;
+}
+
+.sp__table-card {
+  background: white;
+  border-radius: var(--r-lg);
+  border-left: 4px solid var(--accent);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .07);
+  overflow: hidden;
+}
+
+.sp__table-header {
+  padding: 14px 16px;
+}
+
+.sp__table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sp__table {
+  min-width: 720px;
+}
+
+.sp__row:nth-child(even) td {
+  background: #fafafa;
+}
+
+.sp__name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sp__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: rgba(79,70,229,.1);
+  color: #4f46e5;
+  font-weight: 700;
+  font-size: .75rem;
+  flex-shrink: 0;
+}
+
+.sp__actions-header {
+  text-align: left;
+}
+
+.sp__actions-cell {
+  text-align: left;
+}
+
+.sp__center-cell {
+  text-align: center;
+}
+
+.sp__action-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sp__pagination {
+  display: flex;
+  justify-content: space-between;
+  padding: 13px 16px;
+  border-top: 1px solid #eee;
+}
+
+.sp__pagination-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+@media (max-width: 600px) {
+
+  .sp {
+    padding: 20px 12px;
+  }
+}

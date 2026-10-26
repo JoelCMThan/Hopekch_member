@@ -1,0 +1,864 @@
+/* CommunicationModal.css
+  Draft Message / Email Communication Modal */
+
+.communication-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.communication-modal {
+  width: 100%;
+  max-width: 760px;
+  max-height: calc(100vh - 2rem);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(121, 119, 109, 0.16);
+}
+
+/* ============================================================
+   Header
+   ============================================================ */
+
+.communication-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  background: #fdf9f5;
+  border-bottom: 1px solid rgba(121, 119, 109, 0.16);
+  flex-shrink: 0;
+}
+
+.communication-modal__header-icon {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #605e58;
+  background: rgba(96, 94, 88, 0.1);
+  border-radius: 8px;
+}
+
+.communication-modal__header-icon .material-symbols-outlined {
+  font-size: 20px;
+}
+
+.communication-modal__title {
+  margin: 0;
+}
+
+.communication-modal__subtitle {
+  margin: 0.2rem 0 0;
+}
+
+.communication-modal__close:focus-visible {
+  outline: 2px solid rgba(96, 94, 88, 0.35);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   Body
+   ============================================================ */
+
+.communication-modal__body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 1.75rem 2rem;
+  background: #ffffff;
+}
+
+.communication-modal__body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.communication-modal__body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.communication-modal__body::-webkit-scrollbar-thumb {
+  background: #cac6ba;
+  border-radius: 10px;
+}
+
+.communication-modal__body::-webkit-scrollbar-thumb:hover {
+  background: #79776d;
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+
+.communication-modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: #f1ede9;
+  border-top: 1px solid rgba(121, 119, 109, 0.14);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  .communication-modal-overlay {
+    padding: 0.75rem;
+  }
+
+  .communication-modal {
+    max-height: calc(100vh - 1.5rem);
+    border-radius: 10px;
+  }
+
+  .communication-modal__header {
+    padding: 1rem 1.15rem;
+  }
+
+  .communication-modal__body {
+    padding: 1.25rem;
+  }
+
+  .communication-modal__footer {
+    padding: 0.9rem 1.15rem;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .communication-modal-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .communication-modal {
+    max-width: none;
+    max-height: 94vh;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .communication-modal__title {
+    font-size: 1.1rem;
+  }
+
+  .communication-modal__body {
+    padding: 1rem;
+  }
+
+  .communication-modal__footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 420px) {
+
+  .communication-modal__header {
+    padding: 0.9rem 1rem;
+  }
+
+  .communication-modal__header-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .communication-modal__subtitle {
+    display: none;
+  }
+
+  .communication-modal__body {
+    padding: 0.9rem;
+  }
+
+  .communication-modal__footer {
+    padding: 0.8rem 0.9rem;
+  }
+
+}
+
+/* ============================================================
+   Accessibility
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .communication-form-input,
+  .communication-recipient-box,
+  .communication-editor,
+  .communication-editor__toolbar button,
+  .communication-btn,
+  .communication-modal__close,
+  .communication-recipient-option,
+  .communication-recipient-result {
+    transition: none;
+  }
+}
+
+/* ============================================================
+   Draft composer controls
+   ============================================================ */
+
+.communication-modal {
+  width: min(900px, 100%);
+  max-height: min(860px, calc(100vh - 2rem));
+}
+
+.communication-modal__header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.communication-modal__error {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+}
+
+.communication-form-field {
+  margin-bottom: 1.35rem;
+}
+
+.communication-form-field--content {
+  margin-bottom: 0;
+}
+
+.communication-form-label {
+  display: block;
+  margin: 0 0 0.55rem;
+}
+
+.communication-recipient-modes {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.35rem;
+  margin-bottom: 0.65rem;
+  padding: 0.25rem;
+  background: #f1ede7;
+  border: 1px solid #e2ddd5;
+  border-radius: 8px;
+}
+
+.communication-recipient-mode {
+  min-width: 0;
+  min-height: 36px;
+  padding: 0.45rem 0.7rem;
+  color: #756e65;
+  background: transparent;
+  border: 1px solid #d8d1c8;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.communication-recipient-mode:hover {
+  color: #403b35;
+  background: #e8e2da;
+}
+
+.communication-recipient-mode--active {
+  color: #ffffff;
+  background: #63584d;
+  border-color: #63584d;
+  box-shadow: 0 2px 5px rgba(99, 88, 77, 0.18);
+}
+
+.communication-recipient-mode--active:hover {
+  color: #ffffff;
+  background: #4e443b;
+}
+
+@media (max-width: 760px) {
+
+  .communication-recipient-modes {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .communication-recipient-mode {
+    padding-inline: 0.25rem;
+    overflow-wrap: anywhere;
+  }
+}
+
+.communication-recipient-summary {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0.75rem 0.9rem;
+  color: #625b52;
+  background: #f8f5f0;
+  border: 1px solid #d9d4cc;
+  border-radius: 9px;
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+}
+
+.communication-recipient-scope-picker {
+  position: relative;
+}
+
+.communication-recipient-scope-trigger {
+  width: 100%;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.7rem 0.9rem;
+  color: #4e4941;
+  background: #faf8f5;
+  border: 1px solid #d9d4cc;
+  border-radius: 9px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  text-align: left;
+}
+
+.communication-recipient-scope-trigger:hover,
+.communication-recipient-scope-trigger--open {
+  border-color: #756e65;
+  background: #ffffff;
+}
+
+.communication-recipient-scope-trigger > span:first-child {
+  min-width: 0;
+  max-height: 44px;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+  line-height: 1.45;
+}
+
+.communication-recipient-scope-trigger > span:first-child::-webkit-scrollbar {
+  width: 5px;
+}
+
+.communication-recipient-scope-trigger > span:first-child::-webkit-scrollbar-thumb {
+  background: #c9c1b7;
+  border-radius: 999px;
+}
+
+.communication-recipient-scope-trigger:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.communication-recipient-scope-trigger .material-symbols-outlined {
+  transition: transform 0.15s ease;
+}
+
+.communication-recipient-scope-trigger--open .material-symbols-outlined {
+  transform: rotate(180deg);
+}
+
+.communication-recipient-scope-menu {
+  position: absolute;
+  z-index: 10;
+  top: calc(100% + 0.35rem);
+  left: 0;
+  right: 0;
+  max-height: 220px;
+  display: grid;
+  gap: 0.35rem;
+  overflow-y: auto;
+  padding: 0.45rem;
+  background: #ffffff;
+  border: 1px solid #d9d4cc;
+  border-radius: 9px;
+  box-shadow: 0 12px 28px rgba(34, 30, 25, 0.14);
+}
+
+.communication-recipient-scope {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem 0.75rem;
+  color: #4e4941;
+  background: #faf8f5;
+  border: 1px solid #e2ddd5;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  text-align: left;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.communication-recipient-scope:hover {
+  background: #f1ede7;
+  border-color: #c9c1b7;
+}
+
+.communication-recipient-scope--selected {
+  color: #40382f;
+  background: #eee7dc;
+  border-color: #a99a87;
+}
+
+.communication-recipient-scope__check {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: #ffffff;
+  border: 1px solid #b9b0a5;
+  border-radius: 5px;
+}
+
+.communication-recipient-scope--selected .communication-recipient-scope__check {
+  color: #ffffff;
+  background: #63584d;
+  border-color: #63584d;
+}
+
+.communication-recipient-scope__check .material-symbols-outlined {
+  font-size: 16px;
+}
+
+.communication-form-input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.communication-recipient-box {
+  width: 100%;
+  box-sizing: border-box;
+  color: #1c1c19;
+  background: #faf8f5;
+  border: 1px solid #d9d4cc;
+  border-radius: 9px;
+  font-family: var(--font-body);
+  transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.communication-recipient-input::placeholder {
+  color: #969188;
+}
+
+.communication-recipient-box:hover {
+  border-color: #b9b2a8;
+}
+
+.communication-recipient-box:focus-within,
+.communication-editor:focus-within {
+  background: #ffffff;
+  border-color: #756e65;
+  box-shadow: 0 0 0 3px rgba(117, 110, 101, 0.12);
+}
+
+.communication-recipient-box {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  padding: 0.55rem 0.7rem;
+}
+
+.communication-recipient-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  max-width: 100%;
+  padding: 0.4rem 0.55rem 0.4rem 0.75rem;
+  color: #3e3b34;
+  background: #ebe5d7;
+  border: 1px solid #d9cfbd;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.communication-recipient-chip > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.communication-recipient-chip small {
+  overflow: hidden;
+  color: #777066;
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.communication-recipient-chip button {
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0;
+  color: #665f55;
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.communication-recipient-chip button:hover {
+  color: #8f1d2c;
+  background: rgba(143, 29, 44, 0.1);
+}
+
+.communication-recipient-chip .material-symbols-outlined {
+  font-size: 16px;
+}
+
+.communication-recipient-input {
+  flex: 1 1 180px;
+  min-width: 150px;
+  min-height: 32px;
+  padding: 0.25rem 0.2rem;
+  color: #1c1c19;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+}
+
+.communication-recipient-dropdown {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 0.55rem;
+}
+
+.communication-recipient-result {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.7rem 0.8rem;
+  color: #403d36;
+  background: #f8f5f0;
+  border: 1px solid #e2ddd5;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  text-align: left;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.communication-recipient-result:hover {
+  background: #eee9e1;
+  border-color: #c9c1b7;
+}
+
+.communication-recipient-result__icon {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #625b52;
+  background: #e8e1d7;
+  border-radius: 50%;
+}
+
+.communication-recipient-result__info {
+  min-width: 0;
+  display: grid;
+  gap: 0.15rem;
+}
+
+.communication-recipient-result__info strong,
+.communication-recipient-result__info span,
+.communication-recipient-result__info small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.communication-recipient-result__info strong {
+  color: #292721;
+  font-size: 0.82rem;
+}
+
+.communication-recipient-result__info span,
+.communication-recipient-result__info small {
+  color: #817a70;
+  font-size: 0.72rem;
+}
+
+.communication-recipient-empty {
+  padding: 0.8rem;
+  color: #817a70;
+  background: #f8f5f0;
+  border: 1px solid #e2ddd5;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.communication-leadership-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.communication-leadership-selector__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.communication-leadership-higher {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: fit-content;
+  cursor: pointer;
+  color: #57534e;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.communication-leadership-higher input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--accent);
+}
+
+.communication-editor {
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #faf8f5;
+  border: 1px solid #d9d4cc;
+  border-radius: 9px;
+  transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.communication-editor__toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.5rem 0.65rem;
+  background: #f1ede7;
+  border-bottom: 1px solid #e2ddd5;
+}
+
+.communication-editor__toolbar button {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: #756e65;
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+}
+
+.communication-editor__toolbar button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.communication-editor__toolbar button:hover {
+  color: #403b35;
+  background: #e5ded5;
+}
+
+.communication-editor__toolbar .material-symbols-outlined {
+  font-size: 19px;
+}
+
+.communication-editor__divider {
+  width: 1px;
+  height: 22px;
+  margin: 0 0.35rem;
+  background: #d2cbc1;
+}
+
+.communication-editor__textarea {
+  width: 100%;
+  min-height: 300px;
+  flex: 1;
+  box-sizing: border-box;
+  padding: 1rem 1.1rem;
+  color: #1c1c19;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  resize: vertical;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.communication-editor__textarea:empty::before {
+  content: attr(data-placeholder);
+  color: #969188;
+  pointer-events: none;
+}
+
+.communication-editor__textarea strong {
+  font-weight: 700;
+}
+
+.communication-editor__textarea em {
+  font-style: italic;
+}
+
+.communication-editor__textarea ul,
+.communication-editor__textarea ol {
+  margin: 0.35rem 0;
+  padding-left: 1.6rem;
+}
+
+.communication-editor__textarea li {
+  margin: 0.15rem 0;
+  padding-left: 0.2rem;
+}
+
+.communication-editor__textarea img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0.5rem 0;
+}
+
+.communication-editor__textarea a {
+  color: #6b4f36;
+  text-decoration: underline;
+}
+
+.communication-editor__textarea p {
+  margin: 0;
+}
+
+.communication-editor__attachments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  padding: 0.55rem 0.65rem;
+  background: #faf8f5;
+  border-bottom: 1px solid #e2ddd5;
+}
+
+.communication-editor__attachment {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: #4e4941;
+  background: #eee7dc;
+  border: 1px solid #d9cfbd;
+  border-radius: 6px;
+  padding: 0.35rem 0.45rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.communication-editor__attachment > .material-symbols-outlined {
+  font-size: 16px;
+}
+
+.communication-editor__attachment button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: #756e65;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.communication-editor__attachment button:hover {
+  color: #a33a43;
+}
+
+.communication-editor__attachment button .material-symbols-outlined {
+  font-size: 16px;
+}
+
+.communication-modal__footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-left: auto;
+}
+
+@media (max-width: 600px) {
+
+  .communication-modal {
+    max-height: 94vh;
+  }
+
+  .communication-modal__footer-actions {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .communication-btn {
+    flex: 1;
+  }
+
+  .communication-btn--discard {
+    width: 100%;
+  }
+
+  .communication-editor {
+    min-height: 280px;
+  }
+
+  .communication-editor__textarea {
+    min-height: 220px;
+  }
+}
+
+.communication-announcement-modal__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.35rem 1.5rem;
+  border-bottom: 1px solid var(--border-color, rgba(0, 0, 0, 0.08));
+}
+
+.communication-announcement-modal__meta {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2rem;
+  padding: 1.15rem 1.5rem;
+  background: var(--surface-container-low, #f7f7f7);
+  border-bottom: 1px solid var(--border-color, rgba(0, 0, 0, 0.06));
+}
+
+.communication-announcement-modal__message p {
+  margin: 0;
+}

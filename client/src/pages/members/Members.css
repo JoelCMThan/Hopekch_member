@@ -1,0 +1,189 @@
+/* ── Filters ─────────────────────────────────────────────────── */
+
+.mp__filters {
+  display: grid;
+  grid-template-columns: minmax(240px, 1.8fr) repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+  align-items: center;
+  width: 100%;
+}
+
+.mp__filter-search {
+  position: relative;
+  min-width: 0;
+}
+
+.mp__filter-icon {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.mp__search-input,
+.mp__filter-select {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.mp__search-input {
+  padding: 0 14px 0 40px;
+}
+
+.mp__filter-select {
+  padding: 0 38px 0 12px;
+  cursor: pointer;
+}
+
+.mp__search-input::placeholder {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.mp__clear-btn {
+  justify-self: start;
+}
+
+/* ── Card wrapper ────────────────────── */
+
+.mp__card {
+  background: #fff;
+  border-radius: var(--r-lg);
+  border-left: 4px solid var(--accent);
+  box-shadow: 0 1px 4px rgba(0,0,0,.07);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+}
+
+.mp__header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Scroll container */
+
+.mp__table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+/* ── Card Header ───────────────────────────────────────── */
+
+.mp__table-header {
+  padding: 14px 16px 0;
+}
+
+/* ── Table ───────────────────────────────────────────────────── */
+
+.mp__table {
+  min-width: 920px;
+}
+
+.mp__table thead tr {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+/* ── Cells ───────────────────────────────────────────────────── */
+
+.mp__row--clickable {
+  cursor: pointer;
+}
+
+.role--member {
+  background: #f5f5f4;
+  color: #57534e;
+}
+
+.role--lg-leader {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.role--unit-leader {
+  background: #eef2ff;
+  color: #4338ca;
+}
+
+.role--subdistrict-leader {
+  background: #f0f9ff;
+  color: #0369a1;
+}
+
+.role--admin {
+  background: #fdf4ff;
+  color: #7e22ce;
+}
+
+.role--manager {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.role--none {
+  background: #f5f5f4;
+  color: #a8a29e;
+}
+
+/* Action column spacing ───────────── */
+
+.mp__th-actions {
+  text-align: left;
+}
+
+.mp__actions-cell {
+  text-align: left;
+}
+
+.mp__action-group {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+/* ── Pagination ──────────────────────────────────────────────── */
+
+.mp__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 16px;
+  border-top: 1px solid #f1ede9;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ── Mobile improvements ─────────────────────────────────────── */
+@media (max-width: 900px) {
+
+  .mp__filters {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .mp__filter-search {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .mp {
+    padding: 20px 12px;
+  }
+
+  .mp__filters {
+    grid-template-columns: 1fr;
+  }
+}

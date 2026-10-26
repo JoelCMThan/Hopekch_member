@@ -1,0 +1,97 @@
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
+  height: 160px;
+  padding: 0 4px;
+}
+
+.bar-chart__col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.bar-chart__bar {
+  width: 100%;
+  border-radius: 4px 4px 0 0;
+  min-height: 4px;
+  transition: opacity 0.15s ease;
+  cursor: default;
+  position: relative;
+}
+
+.bar-chart__bar:hover { opacity: 0.8; }
+
+.bar-chart__bar:hover::after {
+  content: attr(data-value);
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text-dark);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.bar-chart__label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-align: center;
+  word-break: break-all;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+/* Split (male/female) bars */
+.bar-chart--split .bar-chart__col {
+  min-width: 0;
+}
+
+.bar-chart__bar--split {
+  width: 100%;
+  border-radius: 4px 4px 0 0;
+  min-height: 4px;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow: hidden;
+  cursor: default;
+  position: relative;
+  transition: opacity 0.15s ease;
+}
+
+.bar-chart__bar--split:hover { opacity: 0.8; }
+
+.bar-chart__bar--split > div {
+  width: 100%;
+}
+
+.bar-chart__bar--split:hover::after {
+  content: attr(data-value);
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text-dark);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+

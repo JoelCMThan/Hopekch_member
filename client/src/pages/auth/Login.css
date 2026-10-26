@@ -1,0 +1,266 @@
+.login-footer-note {
+  margin-top: 20px;
+}
+
+.login-card-header p {
+  margin: 6px 0 20px;
+}
+
+.login-card-header h2 {
+  margin: 0;
+}
+
+.login-accent-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+}
+
+.login-card {
+  padding: 32px;
+  position: relative;
+}
+
+.login-subtitle {
+  margin: 6px 0 0;
+}
+
+.login-title {
+  margin: 0;
+}
+
+.login-header {
+  margin-bottom: 24px;
+}
+
+.login-container {
+  z-index: 1;
+}
+
+.login-page {
+  position: relative;
+}
+/* ── Page shell ─────────────────────────────────────────────── */
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background: var(--bg-page);
+}
+
+/* ── Centred container ──────────────────────────────────────── */
+
+.login-container {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Branding ───────────────────────────────────────────────── */
+
+.login-header {
+  text-align: center;
+}
+
+.login-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  letter-spacing: -0.01em;
+}
+
+.login-subtitle {
+  margin-top: 6px;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* ── Card ───────────────────────────────────────────────────── */
+
+.login-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+/* Thin top accent instead of a side bar — cleaner */
+
+.login-accent-bar {
+  height: 3px;
+  background: var(--accent);
+}
+
+.login-card-header {
+  padding: 28px 32px 0;
+}
+
+.login-card-header h2 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.login-card-header p {
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ── Error ──────────────────────────────────────────────────── */
+
+.login-error {
+  /* reuses .alert-error from global — just add spacing */
+  margin: 16px 32px 0;
+}
+
+/* ── Form body ──────────────────────────────────────────────── */
+
+.login-form {
+  padding: 24px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Remember + forgot row */
+
+.login-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.login-remember {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.login-forgot {
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: color var(--t);
+}
+
+.login-forgot:hover {
+  color: var(--text-dark);
+}
+
+/* Arrow nudge on hover */
+
+.login-btn .arrow {
+  display: inline-block;
+  transition: transform var(--t);
+}
+
+.login-btn:hover:not(:disabled) .arrow {
+  transform: translateX(3px);
+}
+
+/* ── Register link ──────────────────────────────────────────── */
+
+.login-register-hint {
+  padding: 16px 32px 28px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.login-register-hint a {
+  font-weight: 700;
+  color: var(--accent);
+  margin-left: 4px;
+  transition: color var(--t);
+}
+
+.login-register-hint a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+/* ── Footer disclaimer ──────────────────────────────────────── */
+
+.login-footer-note {
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  opacity: 0.75;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  .login-card-header,
+  .login-form {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .login-error {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .login-register-hint {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+/* ── Password visibility toggle ─────────────────────────────── */
+
+.login-form .field-input {
+  padding: 11px 14px;
+}
+
+.login-password-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.login-password-wrap .field-input {
+  width: 100%;
+  padding-right: 44px;
+}
+
+.login-password-toggle {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color var(--t);
+}
+
+.login-password-toggle:hover {
+  color: var(--text-dark);
+}
+
+.login-btn {
+  width: 100%;
+  padding: 13px 20px;
+  margin-top: 10px;
+}

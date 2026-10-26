@@ -1,0 +1,54 @@
+/* src/components/subdistricts/SubdistrictModal.css */
+
+.subdistrict-modal {
+  width: min(100%, 620px);
+  max-height: 92vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.subdistrict-modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.subdistrict-modal__title {
+  margin: 0;
+}
+
+.subdistrict-modal__body {
+  overflow-y: auto;
+  display: grid;
+  gap: 20px;
+}
+
+.subdistrict-modal__field {
+  display: grid;
+}
+
+.subdistrict-modal__input {
+  width: 100%;
+}
+
+.subdistrict-modal__footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 720px) {
+
+  .subdistrict-modal {
+    width: 100%;
+  }
+
+  .subdistrict-modal__body {
+    padding: 18px;
+  }
+
+  .subdistrict-modal__footer {
+    flex-direction: column-reverse;
+  }
+}

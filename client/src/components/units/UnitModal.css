@@ -1,0 +1,84 @@
+/* UnitModal.css */
+
+.unit-modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 120;
+}
+
+.unit-modal {
+  width: min(100%, 620px);
+  max-height: 92vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── header ────────────────────────────────────────────────── */
+
+.unit-modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.unit-modal__title {
+  margin: 0;
+}
+
+.unit-modal__subtitle {
+  margin: 8px 0 0;
+}
+
+/* ── body ──────────────────────────────────────────────────── */
+
+.unit-modal__body {
+  overflow-y: auto;
+  display: grid;
+  gap: 20px;
+}
+
+.unit-modal__field {
+  display: grid;
+}
+
+/* ── inputs ────────────────────────────────────────────────── */
+
+.unit-modal__input,
+.unit-modal__select {
+  width: 100%;
+}
+
+/* ── errors ────────────────────────────────────────────────── */
+
+.unit-modal__api-error {
+  margin: 0;
+}
+
+/* ── actions ───────────────────────────────────────────────── */
+
+.unit-modal__actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ── responsive ────────────────────────────────────────────── */
+@media (max-width: 720px) {
+
+  .unit-modal {
+    width: 100%;
+  }
+
+  .unit-modal__body {
+    padding: 18px;
+  }
+
+  .unit-modal__actions {
+    flex-direction: column-reverse;
+  }
+}

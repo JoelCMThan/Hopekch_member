@@ -1,0 +1,167 @@
+CREATE DATABASE IF NOT EXISTS church_db;
+USE church_db;
+
+CREATE TABLE Subdistrict (
+    SubdistrictID INT AUTO_INCREMENT PRIMARY KEY,
+    SubdistrictName VARCHAR(255) NOT NULL,
+    IsActive BOOLEAN NOT NULL DEFAULT TRUE
+);
+
+CREATE TABLE Unit (
+    UnitID INT AUTO_INCREMENT PRIMARY KEY,
+    SubdistrictID INT NULL,
+    UnitName VARCHAR(255) NOT NULL,
+    IsActive BOOLEAN NOT NULL DEFAULT TRUE,
+    FOREIGN KEY (SubdistrictID) REFERENCES Subdistrict(SubdistrictID) ON DELETE SET NULL
+);
+
+CREATE TABLE `LifeGroup` (
+    LifeGroupID INT AUTO_INCREMENT PRIMARY KEY,
+    UnitID INT NULL,
+    LifeGroupName VARCHAR(255) NOT NULL,
+    MeetingAddress TEXT NULL,
+    Latitude DECIMAL(10,8) NULL,
+    Longitude DECIMAL(11,8) NULL,
+    IsActive BOOLEAN NOT NULL DEFAULT TRUE,
+    FOREIGN KEY (UnitID) REFERENCES Unit(UnitID) ON DELETE SET NULL
+);
+
+CREATE TABLE Member (
+    MemberID INT AUTO_INCREMENT PRIMARY KEY,
+    LifeGroupID INT NULL,
+    FirstName VARCHAR(100) NOT NULL,
+    LastName VARCHAR(100) NOT NULL,
+    Gender VARCHAR(50),
+    BirthDate DATE,
+    MaritalStatus VARCHAR(50),
+    Email VARCHAR(255) UNIQUE,
+    JoinDate DATE,
+      MemberSince DATE,
+    FOREIGN KEY (LifeGroupID) REFERENCES `LifeGroup`(LifeGroupID) ON DELETE SET NULL
+);
+
+CREATE TABLE MembershipStatus (
+    MemberID INT PRIMARY KEY,
+    MembershipType VARCHAR(100) NOT NULL,
+    BelieverStatus VARCHAR(100) NULL,
+    FOREIGN KEY (MemberID) REFERENCES Member(MemberID) ON DELETE CASCADE
+);
+
+CREATE TABLE MemberPhone (
+    MemberID INT PRIMARY KEY,
+    MobileNumber VARCHAR(50),
+    LandlineNumber VARCHAR(50),
+    FOREIGN KEY (MemberID) REFERENCES Member(MemberID) ON DELETE CASCADE
+);
+
+CREATE TABLE Address (
+    AddressID INT AUTO_INCREMENT PRIMARY KEY,
+    MemberID INT UNIQUE,
+    StreetAddress TEXT,
+    City VARCHAR(100),
+    State VARCHAR(100),
+    PostalCode VARCHAR(20),
+    Country VARCHAR(100),
+    Latitude DECIMAL(10,8),
+    Longitude DECIMAL(11,8),
+    FOREIGN KEY (MemberID) REFERENCES Member(MemberID) ON DELETE CASCADE
+);
+
+CREATE TABLE `User` (
+    UserID INT AUTO_INCREMENT PRIMARY KEY,
+    MemberID INT UNIQUE,
+    PasswordHash VARCHAR(255) NOT NULL,
+    Role VARCHAR(100) NOT NULL,
+    CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (MemberID) REFERENCES Member(MemberID) ON DELETE CASCADE
+);
+
+CREATE TABLE SystemSetting (
+    SettingKey VARCHAR(100) PRIMARY KEY,
+    SettingValue TEXT NOT NULL,
+    UpdatedByUserID INT NULL,
+    UpdatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (UpdatedByUserID) REFERENCES `User`(UserID) ON DELETE SET NULL
+);
+
+-- Initial bulk-import password: Hopechurch123 (change it from Member Management).
+INSERT INTO SystemSetting (SettingKey, SettingValue)
+VALUES ('member_bulk_import_password_hash', '$2b$10$ftIe113IiC4hXfBjCNmR7OEuB6OKgdynWlVZg6idygKXFAuqapdX6');
+
+-- Default model used by the Hope AI assistant. Managers can change it in Settings.
+INSERT INTO SystemSetting (SettingKey, SettingValue)
+VALUES ('llm_chat_model', 'gemini-2.5-flash');
+
+CREATE TABLE ScopeType (
+    ScopeTypeID INT AUTO_INCREMENT PRIMARY KEY,
+    ScopeName VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE Leadership (
+    LeadershipID INT AUTO_INCREMENT PRIMARY KEY,
+    MemberID INT NULL,
+    ScopeTypeID INT NULL,
+    ScopeID INT,
+    LeadershipType VARCHAR(100),
+    IsActiveLeader BOOLEAN DEFAULT TRUE,
+    AssignedDate DATE,
+    FOREIGN KEY (MemberID) REFERENCES Member(MemberID) ON DELETE SET NULL,
+    FOREIGN KEY (ScopeTypeID) REFERENCES ScopeType(ScopeTypeID) ON DELETE SET NULL
+);
+
+CREATE TABLE MembershipActive (
+    MemberID INT PRIMARY KEY,
+    IsActive BOOLEAN NOT NULL DEFAULT TRUE,
+    InactiveReason ENUM(
+        'Transferred University',
+        'Moved',
+        'Changed Church',
+        'Migrant',
+        'Personal',
+        'Others'
+    ) NULL,
+    AdditionalNotes TEXT NULL,
+    DeactivatedByMemberID INT NULL,
+    DeactivatedDate DATETIME NULL,
+    FOREIGN KEY (MemberID) REFERENCES Member(MemberID) ON DELETE CASCADE,
+    FOREIGN KEY (DeactivatedByMemberID) REFERENCES Member(MemberID) ON DELETE SET NULL
+);
+
+CREATE TABLE MemberEngagement (
+    MemberID INT PRIMARY KEY,
+    IsActiveEngage BOOLEAN NOT NULL DEFAULT FALSE,
+    IsActiveLifeGroup BOOLEAN NOT NULL DEFAULT FALSE,
+    IsActiveSundayService BOOLEAN NOT NULL DEFAULT FALSE,
+    IsActiveServing BOOLEAN NOT NULL DEFAULT FALSE,
+    FOREIGN KEY (MemberID) REFERENCES Member(MemberID) ON DELETE CASCADE
+);
+
+CREATE TABLE Baptism (
+    MemberID INT PRIMARY KEY,
+    BaptismDate DATE,
+    Venue VARCHAR(255),
+    Remarks TEXT,
+    FOREIGN KEY (MemberID) REFERENCES Member(MemberID) ON DELETE CASCADE
+);
+
+CREATE TABLE ServiceAttendance (
+    AttendanceID INT AUTO_INCREMENT PRIMARY KEY,
+    ServiceDate DATE NOT NULL,
+    SessionTime VARCHAR(50) NOT NULL,
+    AttendanceCount INT NOT NULL,
+    Remarks TEXT,
+    UNIQUE KEY uq_service_attendance_date_session (ServiceDate, SessionTime)
+);
+
+CREATE TABLE EmailLog (
+    EmailID INT AUTO_INCREMENT PRIMARY KEY,
+    SenderUserID INT NULL,
+    Subject VARCHAR(255) NOT NULL,
+    Message TEXT NOT NULL,
+    RecipientScope VARCHAR(255),
+    Status ENUM('Draft', 'Sent', 'Failed', 'Discarded') NOT NULL DEFAULT 'Draft',
+    CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    UpdatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    SentAt DATETIME NULL,
+    FOREIGN KEY (SenderUserID) REFERENCES `User`(UserID) ON DELETE SET NULL
+);

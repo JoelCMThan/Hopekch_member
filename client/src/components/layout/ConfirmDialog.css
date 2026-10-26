@@ -1,0 +1,41 @@
+.confirm-dialog-overlay {
+  z-index: 1200;
+}
+
+.confirm-dialog {
+  width: 100%;
+  max-width: 420px;
+  overflow: hidden;
+  animation: confirmPop 0.15s ease-out;
+}
+
+.confirm-dialog__title {
+  margin: 0;
+}
+
+.confirm-dialog__body {
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.confirm-dialog--danger .confirm-dialog__body {
+  color: var(--text-dark);
+}
+
+.confirm-dialog__footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@keyframes confirmPop {
+
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,150 @@
+/* client/src/components/analytics/AnalyticsDetailModal.css */
+
+.analytics-detail-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow: hidden;
+}
+
+.analytics-detail {
+  width: min(1000px, 100%);
+  height: min(680px, calc(100dvh - 48px));
+  max-height: calc(100dvh - 48px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+/* ── Header ─────────────────────────────────────────────────── */
+
+.analytics-detail__header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 24px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.analytics-detail__header h2 {
+  margin: 0;
+}
+
+.analytics-detail__header p {
+  margin: 5px 0 0;
+}
+
+/* ── Filters ────────────────────────────────────────────────── */
+
+.analytics-detail__filters {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px 24px;
+  background: var(--bg-page);
+  border-bottom: 1px solid var(--border);
+}
+
+.analytics-detail__filter {
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.analytics-detail__filter select {
+  width: 100%;
+  padding: 0 34px 0 12px;
+  cursor: pointer;
+}
+
+/* ── Chart area ─────────────────────────────────────────────── */
+
+.analytics-detail__content {
+  flex: 1;
+  min-height: 0;
+  padding: 20px 24px 26px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+
+/* The modal content owns scrolling so tall charts never place a second
+   scrollbar beyond the rounded modal boundary. */
+.analytics-detail__content .analytics-chart-scroll {
+  max-height: none;
+  overflow: visible;
+}
+
+.analytics-detail--age .analytics-detail__content {
+  flex: 0 0 auto;
+  padding-bottom: 8px;
+}
+
+.analytics-detail--age {
+  height: auto;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+
+  .analytics-detail-backdrop {
+    padding: 12px;
+  }
+
+  .analytics-detail {
+    height: min(740px, calc(100dvh - 24px));
+    max-height: calc(100dvh - 24px);
+  }
+
+  .analytics-detail__header {
+    padding: 20px;
+  }
+
+  .analytics-detail__filters {
+    padding: 14px 20px;
+  }
+
+  .analytics-detail__filter {
+    flex: 1 1 180px;
+  }
+
+  .analytics-detail__content {
+    min-height: 0;
+    padding: 20px 20px 28px;
+  }
+}
+
+@media (max-width: 500px) {
+
+  .analytics-detail-backdrop {
+    padding: 0;
+  }
+
+  .analytics-detail {
+    width: 100%;
+    height: 100dvh;
+    max-height: 100dvh;
+    border-radius: 0;
+  }
+
+  .analytics-detail__filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .analytics-detail__filter {
+    width: 100%;
+  }
+}

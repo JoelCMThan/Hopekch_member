@@ -1,0 +1,310 @@
+/*
+ * Inactive Member Modal
+ * Matches AddGroupModal styling
+ */
+
+.inactive-member-modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 120;
+}
+
+.inactive-member-modal {
+  width: min(100%, 720px);
+  max-height: calc(100vh - 48px);
+  max-height: calc(100dvh - 48px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.inactive-member-modal > form {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Header */
+
+.inactive-member-modal__header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.inactive-member-modal__heading {
+  min-width: 0;
+}
+
+.inactive-member-modal__title {
+  margin: 0;
+}
+
+.inactive-member-modal__subtitle {
+  margin: 8px 0 0;
+}
+
+.inactive-member-modal__close:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Body */
+
+.inactive-member-modal__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: grid;
+  grid-auto-rows: max-content;
+  gap: 20px;
+}
+
+.inactive-member-modal__field {
+  display: grid;
+}
+
+/* Form Controls */
+
+.inactive-member-modal__search-wrapper {
+  position: relative;
+}
+
+.inactive-member-modal__search,
+.inactive-member-modal__select,
+.inactive-member-modal__textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.inactive-member-modal__textarea {
+  resize: vertical;
+}
+
+/* Member Search Dropdown */
+
+.inactive-member-modal__dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 20;
+  max-height: 240px;
+  overflow-y: auto;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+}
+
+.inactive-member-modal__dropdown-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: #ffffff;
+  border: none;
+  border-bottom: 1px solid #eef2f7;
+  text-align: left;
+  cursor: pointer;
+}
+
+.inactive-member-modal__dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.inactive-member-modal__dropdown-item:hover {
+  background: #f8fafc;
+}
+
+.inactive-member-modal__dropdown-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #eef2ff;
+  color: #4338ca;
+  display: grid;
+  place-items: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.inactive-member-modal__dropdown-info {
+  min-width: 0;
+  display: grid;
+  gap: 3px;
+}
+
+.inactive-member-modal__dropdown-name {
+  color: #111827;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.inactive-member-modal__dropdown-email {
+  color: #6b7280;
+  font-size: 0.78rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.inactive-member-modal__dropdown-empty {
+  padding: 16px 14px;
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+/* Selected Member */
+
+.inactive-member-modal__selected {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background: #f8fafc;
+}
+
+.inactive-member-modal__selected-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.inactive-member-modal__selected-header > div:last-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.inactive-member-modal__selected-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #eef2ff;
+  color: #4338ca;
+  display: grid;
+  place-items: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.inactive-member-modal__selected-name {
+  margin: 0;
+  color: #111827;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.inactive-member-modal__selected-email {
+  margin: 3px 0 0;
+  color: #6b7280;
+  font-size: 0.78rem;
+}
+
+/* Member Hierarchy */
+
+.inactive-member-modal__hierarchy {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  padding-top: 14px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.inactive-member-modal__hierarchy-item {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.inactive-member-modal__hierarchy-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6b7280;
+}
+
+.inactive-member-modal__hierarchy-value {
+  color: #111827;
+  font-size: 0.875rem;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+/* Change Member Button */
+
+.inactive-member-modal__change {
+  width: fit-content;
+}
+
+/* Errors */
+
+.inactive-member-modal__error {
+  margin: 0;
+}
+
+.inactive-member-modal__field-error {
+  display: block;
+  margin-top: 0;
+}
+
+/* Actions */
+
+.inactive-member-modal__actions {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Responsive */
+
+@media (max-width: 720px) {
+
+  .inactive-member-modal-overlay {
+    padding: 12px;
+  }
+
+  .inactive-member-modal {
+    width: 100%;
+    max-height: calc(100vh - 24px);
+    max-height: calc(100dvh - 24px);
+  }
+
+  .inactive-member-modal__header,
+  .inactive-member-modal__body {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .inactive-member-modal__actions {
+    padding-left: 18px;
+    padding-right: 18px;
+    flex-direction: column-reverse;
+  }
+
+  .inactive-member-modal__button {
+    width: 100%;
+  }
+
+  .inactive-member-modal__hierarchy {
+    grid-template-columns: 1fr;
+  }
+}
+
+.inactive-member-modal__textarea {
+  min-height: 110px;
+}

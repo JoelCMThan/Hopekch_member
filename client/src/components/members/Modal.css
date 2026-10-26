@@ -1,0 +1,324 @@
+/* Modal.css — shared styles for MemberFormModal & MemberDeleteModal */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  padding: 16px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: overlay-in 160ms ease;
+}
+
+@keyframes overlay-in {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.modal {
+  width: 100%;
+  max-width: 680px;
+  max-height: 92vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: modal-in 180ms ease;
+}
+
+/* Wider modal for Add/Edit Member */
+
+.modal--wide {
+  max-width: 760px;
+}
+
+.modal--sm {
+  max-width: 460px;
+}
+
+@keyframes modal-in {
+
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── Header ── */
+
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+/* ── Body ── */
+
+.modal__body {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Error banner ── */
+
+.modal__error-banner {
+  margin-bottom: 16px;
+}
+
+/* ── Sections ── */
+
+.modal__section {
+  margin: 0 0 20px;
+  padding: 0;
+  border: none;
+}
+
+.modal__section--error {
+  margin-left: -10px;
+  margin-right: -10px;
+  padding: 10px;
+  background: var(--error-bg);
+  border: 1px solid var(--error-border);
+  border-radius: var(--r-md);
+}
+
+.modal__section--error .modal__section-title {
+  color: var(--error-text);
+  border-bottom-color: var(--error-border);
+}
+
+.modal__section:last-of-type {
+  margin-bottom: 0;
+}
+
+.modal__section-title {
+  display: block;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Footer ── */
+
+.modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+/* ── Delete modal ── */
+
+.delete-modal__warning {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: var(--r-md);
+}
+
+.modal-overlay,
+.group-modal-overlay,
+.unit-modal-overlay,
+.inactive-member-modal-overlay,
+.communication-modal-overlay,
+.analytics-detail-backdrop,
+.ip__details-overlay,
+.logout-overlay {
+  background: rgba(28,25,23,.48);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.modal,
+.group-modal,
+.unit-modal,
+.subdistrict-modal,
+.inactive-member-modal,
+.confirm-dialog,
+.communication-modal,
+.analytics-detail,
+.ip__details-modal,
+.logout-modal {
+  background: var(--bg-card);
+  border-radius: var(--r-xl);
+  box-shadow: 0 8px 32px rgba(0,0,0,.18), 0 2px 8px rgba(0,0,0,.08);
+}
+
+.modal__title,
+.group-modal__title,
+.unit-modal__title,
+.subdistrict-modal__title,
+.inactive-member-modal__title,
+.confirm-dialog__title,
+.communication-modal__title,
+.analytics-detail__header h2,
+.ip__details-header h2,
+.logout-modal__title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-dark);
+}
+
+.modal__subtitle,
+.group-modal__subtitle,
+.unit-modal__subtitle,
+.subdistrict-modal__subtitle,
+.inactive-member-modal__subtitle,
+.communication-modal__subtitle,
+.analytics-detail__header p,
+.ip__details-header p,
+.logout-modal__description {
+  font-family: var(--font-body);
+  font-size: .875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.modal__close,
+.group-modal__close,
+.unit-modal__close,
+.inactive-member-modal__close,
+.communication-modal__close,
+.analytics-detail__close,
+.ip__details-close {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-input);
+  border: none;
+  border-radius: var(--r-sm);
+  font-size: 20px;
+  line-height: 1;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background var(--t), color var(--t);
+}
+
+.modal__close:hover:not(:disabled),
+.group-modal__close:hover:not(:disabled),
+.unit-modal__close:hover:not(:disabled),
+.inactive-member-modal__close:hover:not(:disabled),
+.communication-modal__close:hover:not(:disabled),
+.analytics-detail__close:hover:not(:disabled),
+.ip__details-close:hover:not(:disabled) {
+  background: var(--bg-hover);
+  color: var(--text-dark);
+}
+
+.modal__close:disabled,
+.group-modal__close:disabled,
+.unit-modal__close:disabled,
+.inactive-member-modal__close:disabled,
+.communication-modal__close:disabled,
+.analytics-detail__close:disabled,
+.ip__details-close:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.modal__close .material-symbols-outlined,
+.group-modal__close .material-symbols-outlined,
+.unit-modal__close .material-symbols-outlined,
+.inactive-member-modal__close .material-symbols-outlined,
+.communication-modal__close .material-symbols-outlined,
+.analytics-detail__close .material-symbols-outlined {
+  font-size: 20px;
+}
+
+.modal__close svg,
+.group-modal__close svg,
+.unit-modal__close svg,
+.inactive-member-modal__close svg,
+.communication-modal__close svg,
+.analytics-detail__close svg {
+  width: 20px;
+  height: 20px;
+}
+
+.modal__header,
+.group-modal__header,
+.unit-modal__header,
+.subdistrict-modal__header,
+.inactive-member-modal__header,
+.confirm-dialog__header,
+.ip__details-header {
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal__body,
+.group-modal__body,
+.unit-modal__body,
+.subdistrict-modal__body,
+.inactive-member-modal__body,
+.confirm-dialog__body,
+.ip__details-body {
+  padding: 20px 24px;
+  font-size: .875rem;
+}
+
+.group-modal__field,
+.unit-modal__field,
+.subdistrict-modal__field,
+.inactive-member-modal__field {
+  gap: 6px;
+}
+
+.group-modal__actions,
+.unit-modal__actions,
+.subdistrict-modal__footer,
+.inactive-member-modal__actions,
+.confirm-dialog__footer {
+  padding: 16px 24px 20px;
+  gap: 10px;
+  border-top: 1px solid var(--border);
+}
+
+/* Component presentation moved from static JSX styles. */
+
+.reset-password__body {
+  gap: 1rem;
+}
+
+.reset-password__description {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.reset-password__footer {
+  padding-top: 0.5rem;
+}
+
+.reset-password__description {
+  font-size: .875rem;
+}

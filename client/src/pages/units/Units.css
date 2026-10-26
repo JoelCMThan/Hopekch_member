@@ -1,0 +1,141 @@
+/* Header */
+
+.up__title {
+  margin: 0;
+}
+
+/* Filters */
+
+.up__controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.up__input,
+.up__select {
+  padding: 0 14px;
+  box-sizing: border-box;
+}
+
+.up__input {
+  width: min(100%, 420px);
+}
+
+.up__select {
+  width: min(100%, 180px);
+}
+
+/* Card */
+
+.up__table-card {
+  background: white;
+  border-radius: var(--r-lg);
+  border-left: 4px solid var(--accent);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .07);
+  overflow: hidden;
+}
+
+.up__table-header {
+  padding: 14px 16px;
+}
+
+/* ── Table Wrapper ───────────────────────────────── */
+
+.up__table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+/* ── Table ───────────────────────────────────────── */
+
+.up__table {
+  min-width: 980px;
+}
+
+
+/* ── Table Cells ─────────────────────────────────── */
+
+.up__row:nth-child(even) td {
+  background: #fafafa;
+}
+
+
+/* ── Unit Cell ───────────────────────────────────── */
+
+.up__unit-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.up__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: rgba(79,70,229,.1);
+  color: #4f46e5;
+  font-weight: 700;
+  font-size: .75rem;
+  flex-shrink: 0;
+}
+
+
+/* ── Center Data ─────────────────────────────────── */
+
+.up__center-cell {
+  text-align: center;
+}
+
+
+/* ── Actions ─────────────────────────────────────── */
+
+.up__actions-header {
+  text-align: left;
+}
+
+.up__actions-cell {
+  text-align: left;
+}
+
+.up__action-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Pagination */
+
+.up__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 16px;
+  border-top: 1px solid #f1ede9;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.875rem;
+}
+
+.up__pagination-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.up__error {
+  margin-bottom: 12px;
+}
+
+@media(max-width: 600px) {
+
+  .up {
+    padding: 20px 12px;
+  }
+}

@@ -1,0 +1,166 @@
+/* ── Header ───────────────────────────────────────── */
+
+.gp__title {
+  margin: 0;
+}
+
+/* ── Filters ─────────────────────────────────────── */
+
+.gp__controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.gp__control-search {
+  position: relative;
+}
+
+.gp__search-input,
+.gp__select {
+  box-sizing: border-box;
+}
+
+.gp__search-input {
+  padding: 0 14px;
+  width: min(100%, 420px);
+  max-width: 420px;
+  display: block;
+  flex: 0 0 auto;
+}
+
+.gp__select {
+  padding: 0 12px;
+  width: min(100%, 180px);
+}
+
+.gp__search-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* ── Card ────────────────────────────────────────── */
+
+.gp__table-card {
+  background: #fff;
+  border-radius: var(--r-lg);
+  border-left: 4px solid var(--accent);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+}
+
+/* ── Card Header ─────────────────────────────────── */
+
+.gp__table-header {
+  padding: 14px 16px 0;
+}
+
+/* ── Table Wrapper ───────────────────────────────── */
+
+.gp__table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── Table ───────────────────────────────────────── */
+
+.gp__table {
+  min-width: 980px;
+}
+
+/* ── Table Cells ─────────────────────────────────── */
+
+.gp__table td:nth-child(4) {
+  text-align: left;
+  padding-left: 38px;
+}
+
+.gp__actions-header {
+  text-align: left;
+}
+
+/* alternating rows like Members */
+
+.gp__row:nth-child(even) td {
+  background: #fafafa;
+}
+
+/* ── Group Cell ──────────────────────────────────── */
+
+.gp__group-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gp__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: rgba(79, 70, 229, 0.1);
+  color: #4f46e5;
+  font-weight: 700;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.gp__center-cell {
+  text-align: center;
+}
+
+.gp__actions-cell {
+  text-align: left;
+}
+
+.gp__action-group {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* ── Pagination ──────────────────────────────────── */
+
+.gp__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 16px;
+  border-top: 1px solid #f1ede9;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.875rem;
+}
+
+.gp__pagination-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+/* ── Error Banner ────────────────────────────────── */
+
+.gp__error {
+  margin-bottom: 12px;
+}
+
+/* ── Responsive ──────────────────────────────────── */
+
+@media (max-width: 600px) {
+
+  .gp {
+    padding: 20px 12px;
+  }
+
+  .gp__header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
